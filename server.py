@@ -6,11 +6,9 @@ import sys
 
 from flask import Flask, redirect, render_template, url_for
 
-# Flask App
 app = Flask(__name__)
 
 
-# Store all image links
 ALL_IMAGES = []
 
 
