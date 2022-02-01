@@ -97,7 +97,7 @@ def index():
         ip = "Unable to get IP"
 
     logging.info(
-        f"{ip} requested to reload the meme database -->\n\tBrowser Family: {ua.browser.family}\n\tBrowser Version: {ua.browser.version_string}\n\tOS Family: {ua.os.family}\n\tOS Version: {ua.os.version_string}\n\tDevice Family: {ua.device.family}\n\tDevice Model: {ua.device.model}\n\tDevice Brand: {ua.device.brand}")
+        f"{ip} requested to reload the meme database -->\n\tBrowser Family: {ua.browser.family}\n\tBrowser Version: {ua.browser.version_string}\n\tOS Family: {ua.os.family}\n\tDevice Model: {ua.device.model}\n\tDevice Brand: {ua.device.brand}")
 
     return render_template("index.html", allmemes=ALL_MEMES, length=str(len(ALL_MEMES)))
 
@@ -116,7 +116,7 @@ def reload():
     except:
         ip = "Unable to get IP"
     logging.info(
-        f"{ip} requested to reload the meme database -->\n\tBrowser Family: {ua.browser.family}\n\tBrowser Version: {ua.browser.version_string}\n\tOS Family: {ua.os.family}\n\tOS Version: {ua.os.version_string}\n\tDevice Family: {ua.device.family}\n\tDevice Model: {ua.device.model}\n\tDevice Brand: {ua.device.brand}")
+        f"{ip} requested to reload the meme database -->\n\tBrowser Family: {ua.browser.family}\n\tBrowser Version: {ua.browser.version_string}\n\tOS Family: {ua.os.family}\n\tDevice Model: {ua.device.model}\n\tDevice Brand: {ua.device.brand}")
 
     _loadAllMemes()
     return redirect(url_for('index'))
