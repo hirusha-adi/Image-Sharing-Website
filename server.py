@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 
 # Store all image links
-ALL_MEMES = []
+ALL_IMAGES = []
 
 
 def _getAllMemeFiles(work_dir: str = os.getcwd()):
@@ -22,22 +22,22 @@ def _getAllMemeFiles(work_dir: str = os.getcwd()):
 
 
 def _loadAllMemes():
-    global ALL_MEMES
+    global ALL_IMAGES
 
     for fileName in _getAllMemeFiles(work_dir=str(os.getcwd())):
         try:
             with open(os.path.join(str(os.getcwd()), "database", str(fileName)), "r", encoding="utf-8") as temp1:
                 all_lines = temp1.read().splitlines()
                 for line in all_lines:
-                    if not(line in ALL_MEMES):
-                        ALL_MEMES.append(str(line).strip())
+                    if not(line in ALL_IMAGES):
+                        ALL_IMAGES.append(str(line).strip())
         except:
             pass
 
 
 @ app.route("/")
 def index():
-    return render_template("index.html", allmemes=ALL_MEMES, length=str(len(ALL_MEMES)))
+    return render_template("index.html", allimages=ALL_IMAGES, length=str(len(ALL_IMAGES)))
 
 
 @ app.route("/r")
