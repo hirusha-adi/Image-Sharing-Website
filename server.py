@@ -23,7 +23,9 @@ logging.basicConfig(format='%(asctime)s - %(message)s',
 # Flask App
 app = Flask(__name__)
 logging.debug("Created Flask app")
-
+app.logger.disabled = True
+ueslessLogger = logging.getLogger('werkzeug')
+ueslessLogger.disabled = True
 
 # Store all image links
 ALL_MEMES = []
@@ -84,17 +86,18 @@ def _loadAllMemes():
 
 @app.route("/")
 def index():
-    # Collecting User Data Manually
-    # try:
-    #     ua = parse(request.headers.get("User-Agent"))
-    # except:
-    #     ua = "Unable to parse UA"
+    # Collecting User Data Manually for security purposes
+    try:
+        ua = parse(request.headers.get("User-Agent"))
+    except:
+        ua = "Unable to parse UA"
+    try:
+        ip = request.headers.get('X-Forwarded-For', request.remote_addr)
+    except:
+        ip = "Unable to get IP"
 
-    # try:
-    #     ip = request.headers.get('X-Forwarded-For', request.remote_addr)
-    # except:
-    #     ip = "Unable to get IP"
-    # logging.info(f"Got request from {ip} --> {ua}")s
+    logging.info(
+        f"{ip} requested to reload the meme database -->\n\tBrowser Family: {ua.browser.family}\n\tBrowser Version: {ua.browser.version_string}\n\tOS Family: {ua.os.family}\n\tOS Version: {ua.os.version_string}\n\tDevice Family: {ua.device.family}\n\tDevice Model: {ua.device.model}\n\tDevice Brand: {ua.device.brand}")
 
     return render_template("index.html", allmemes=ALL_MEMES, length=str(len(ALL_MEMES)))
 
@@ -103,16 +106,17 @@ def index():
 @app.route("/re")
 @app.route("/reload")
 def reload():
-    # Collecting User Data Manually
-    # try:
-    #   ua = parse(request.headers.get("User-Agent"))
-    # except:
-    #   ua = "Unable to parse UA"
-    # try:
-    #   ip = request.headers.get('X-Forwarded-For', request.remote_addr)
-    # except:
-    #   ip = "Unable to get IP"
-    # logging.info(f"{ip} requested to reload the meme database --> {ua}")
+    # Collecting User Data Manually for security purposes
+    try:
+        ua = parse(request.headers.get("User-Agent"))
+    except:
+        ua = "Unable to parse UA"
+    try:
+        ip = request.headers.get('X-Forwarded-For', request.remote_addr)
+    except:
+        ip = "Unable to get IP"
+    logging.info(
+        f"{ip} requested to reload the meme database -->\n\tBrowser Family: {ua.browser.family}\n\tBrowser Version: {ua.browser.version_string}\n\tOS Family: {ua.os.family}\n\tOS Version: {ua.os.version_string}\n\tDevice Family: {ua.device.family}\n\tDevice Model: {ua.device.model}\n\tDevice Brand: {ua.device.brand}")
 
     _loadAllMemes()
     return redirect(url_for('index'))
