@@ -5,30 +5,105 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>Memes</title>
+
 </head>
 
-<body>
-    
-    <h2> 
-        {{ length }} NSFW Memes
-    </h2>
+<body id="start">
 
-    <a href="{{ url_for('reload') }}">
-        <h5>
-            Reload
-        </h5>
-    </a>
+    <header class="site-header">
+        <div class="site-identity">
+            <h1>
+                <a href="#">
+                    {{ length }} Images
+                </a>
+            </h1>
+        </div>
+        <nav class="site-navigation">
+            <ul class="nav">
+                <li><a href="#">Top</a></li>
+                <li><a href="#bottom">Bottom</a></li>
+                <li><a onclick="reloadWebpage()">Reload</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <div class="container">
-        
-        {% for linkname in allmemes%}
-        <img src="{{ linkname }}">
+        {% for linkname in allimages%}
+            <img src="{{ linkname }}">
         {% endfor %}
-    
     </div>
 
+    <a onclick="reloadWebpage()">
+        <h5>Reload</h5>
+    </a>
+
+    <a href="#">
+        <h5>go back to Top</h5>
+    </a>
+
+    <footer id="bottom">
+        <div class="top_header">
+            <section>
+                <span><i class="fa fa-map-marker"></i></span>
+                <span>Sri Lanka</span>
+            </section>
+            <section onclick="showDiscordInfo()">
+                <span><i class="fa fa-phone"></i></span>
+                <span>ZeaCeR#5641</span>
+            </section>
+            <section>
+                <span><i class="fa fa-envelope"></i></span>
+                <span>hirusha@hirusha.xyz</span>
+            </section>
+        </div>
+        <span class="border-shape"></span>
+        <div class="bottom_content">
+            <section>
+                <a href="https://www.facebook.com/hirusha.adikari01/" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.instagram.com/hirusha.adikari.main/" target="_blank"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.instagram.com/hirusha.adikari.photography/" target="_blank"><i class="fa fa-instagram"></i></a>
+                <a href="https://twitter.com/hirusha_adikari/" target="_blank"><i class="fa fa-twitter"></i></a>
+            </section>
+            <section>
+                <a href="http://hirusha.xyz">Home</a>
+                <a href="https://github.com/hirusha-adi/" target="_blank">Github</a>
+                <a onclick="showDiscordInfo()">Contact Us</a>
+            </section>
+        </div>
+        <div class="copyright">
+            Copyright © 2022 @hirusha-adi - All rights reserved
+        </div>
+    </footer>
+
+    <script>
+
+        function reloadWebpage() {
+            secret = prompt("Please enter the password to reload the database", "Secret lol");
+            console.log(secret)
+            if (secret == "dabigzkek") {
+                window.location.href = window.location.href + "/r";
+            }
+            else {
+                alert("Invalid Password")
+            }
+        }
+
+        function showDiscordInfo() {
+            alert("You can contact me on Discord - ZeaCeR#5641")
+        }
+
+    </script>
+
+    
 </body>
 </html>
