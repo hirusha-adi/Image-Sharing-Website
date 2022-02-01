@@ -17,7 +17,7 @@ ALL_MEMES = []
 def _getAllMemeFiles(work_dir: str = os.getcwd()):
     databse_path = os.path.join(work_dir, "database")
     all_files = [fileName for fileName in os.listdir(
-        databse_path) if fileName.lower().endswith(".txt")]
+        databse_path) if fileName.lower().endswith(".db")]
     return all_files
 
 
@@ -35,13 +35,13 @@ def _loadAllMemes():
             pass
 
 
-@app.route("/")
+@ app.route("/")
 def index():
     return render_template("index.html", allmemes=ALL_MEMES, length=str(len(ALL_MEMES)))
 
 
-@app.route("/r")
-@app.route("/reload")
+@ app.route("/r")
+@ app.route("/reload")
 def reload():
     _loadAllMemes()
     return redirect(url_for('index'))
