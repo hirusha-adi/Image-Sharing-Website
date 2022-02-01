@@ -54,6 +54,7 @@ def startServer():
         ueslessLogger = getLogger('werkzeug')
         ueslessLogger.disabled = True
 
+    debug = True
     try:
         if str(sys.argv[1]).lower().startswith("d"):
             debug = True
