@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 
-from logging import getLogger
+import json
 import os
 import sys
+from logging import getLogger
 
 from flask import Flask, redirect, render_template, url_for
 
@@ -62,7 +63,10 @@ def startServer():
     except:
         _disable_werkzeug()
 
-    app.run("0.0.0.0", port=3335, debug=debug)
+    with open(str(os.path.join(os.getcwd(), "database", "config.json")), "r", encoding="utf-8") as fdata:
+        settings = json.load(fdata)
+
+    app.run(settings["HOST"], port=int(settings["PORT"]), debug=debug)
 
 
 if __name__ == "__main__":
