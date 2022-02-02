@@ -52,6 +52,8 @@ def reload():
 
 @app.route("/api")
 def api():
+    if len(ALL_IMAGES) == 0:
+        _loadAllMemes()
     return {"image": random.choice(ALL_IMAGES)}
 
 
