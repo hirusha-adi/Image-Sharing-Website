@@ -4,6 +4,7 @@ import json
 import os
 import sys
 from logging import getLogger
+import random
 
 from flask import Flask, redirect, render_template, url_for
 
@@ -34,16 +35,24 @@ def _loadAllMemes():
             pass
 
 
-@ app.route("/")
+_loadAllMemes()
+
+
+@app.route("/")
 def index():
     return render_template("index.html", allimages=ALL_IMAGES, length=str(len(ALL_IMAGES)))
 
 
-@ app.route("/r")
-@ app.route("/reload")
+@app.route("/r")
+@app.route("/reload")
 def reload():
     _loadAllMemes()
     return redirect(url_for('index'))
+
+
+@app.route("/api")
+def api():
+    return {"image": random.choice(ALL_IMAGES)}
 
 
 def startServer():
