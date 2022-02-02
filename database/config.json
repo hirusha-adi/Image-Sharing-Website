@@ -1,10 +1,32 @@
 {   
+    "SecretKey": "dabigzkek",
+
     "HOST": "0.0.0.0",
     "PORT": 3335,
-    "LinkFiles-Ending": ".db",
+    "LinkFilesEnding": ".db",
+
     "Website": {
         "Location": "Sri Lanka",
         "Contact": "ZeaCeR#5641",
-        "Email": "hirusha@hirusha.xyz"
+        "Email": "hirusha@hirusha.xyz",
+        "Copyright": "Copyright © 2022 @hirusha-adi - All rights reserved",
+        "Social1": {
+            "Facebook": [
+                "https://www.facebook.com/hirusha.adikari01/"
+            ],
+            "Instagram": [
+                "https://www.instagram.com/hirusha.adikari.main/",
+                "https://www.instagram.com/hirusha.adikari.photography/"
+            ],
+            "Twitter": [
+                "https://twitter.com/hirusha_adikari/"
+            ]
+        },
+        "Bottom": {
+            "Home": "http://hirusha.xyz",
+            "Github": "https://github.com/hirusha-adi/",
+            "Contact Us": "http://hirusha.xyz"
+        }
     }
+
 }
