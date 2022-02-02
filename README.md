@@ -1,4 +1,4 @@
-# NSFW Meme Website
+# Image Sharing Website
 
 Simple, Lightweight, Image Sharing Website
 
