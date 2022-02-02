@@ -21,7 +21,7 @@ with open(str(os.path.join(os.getcwd(), "database", "config.json")), "r", encodi
 def _getAllMemeFiles(work_dir: str = os.getcwd()):
     databse_path = os.path.join(work_dir, "database")
     all_files = [fileName for fileName in os.listdir(
-        databse_path) if fileName.lower().endswith(".db")]
+        databse_path) if fileName.lower().endswith(settings["LinkFilesEnding"])]
     return all_files
 
 
@@ -45,12 +45,42 @@ def index():
 
     if len(ALL_IMAGES) == 0:
         _loadAllMemes()
+
+    instagram_links = []
+    facebook_links = []
+    twitter_links = []
+    for key1, value1 in settings["Website"]["Social1"].items():
+        if key1 == "Facebook":
+            if isinstance(value1, list):
+                for valuesfb in value1:
+                    facebook_links.append(valuesfb)
+            else:
+                facebook_links.append(value1)
+        if key1 == "Instagram":
+            if isinstance(value1, list):
+                for valuesig in value1:
+                    instagram_links.append(valuesig)
+            else:
+                instagram_links.append(value1)
+        if key1 == "Twitter":
+            if isinstance(value1, list):
+                for valuetw in value1:
+                    twitter_links.append(valuetw)
+            else:
+                twitter_links.append(value1)
+
     return render_template("index.html",
                            allimages=ALL_IMAGES,
                            length=str(len(ALL_IMAGES)),
                            wblocation=settings["Website"]["Location"],
                            wbcontact=settings["Website"]["Contact"],
-                           wbemail=settings["Website"]["Email"]
+                           wbemail=settings["Website"]["Email"],
+                           wbcopyright=settings["Website"]["Copyright"],
+                           instagram_links=instagram_links,
+                           facebook_links=facebook_links,
+                           twitter_links=twitter_links,
+                           bottom_links=settings["Website"]["Bottom"],
+                           SecretKey=settings["SecretKey"]
                            )
 
 
