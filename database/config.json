@@ -1,5 +1,10 @@
 {   
     "HOST": "0.0.0.0",
     "PORT": 3335,
-    "LinkFiles-Ending": ".db"
+    "LinkFiles-Ending": ".db",
+    "Website": {
+        "Location": "Sri Lanka",
+        "Contact": "ZeaCeR#5641",
+        "Email": "hirusha@hirusha.xyz"
+    }
 }
