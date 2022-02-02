@@ -13,6 +13,10 @@ app = Flask(__name__)
 
 ALL_IMAGES = []
 
+# load settings
+with open(str(os.path.join(os.getcwd(), "database", "config.json")), "r", encoding="utf-8") as fdata:
+    settings = json.load(fdata)
+
 
 def _getAllMemeFiles(work_dir: str = os.getcwd()):
     databse_path = os.path.join(work_dir, "database")
@@ -37,9 +41,17 @@ def _loadAllMemes():
 
 @app.route("/")
 def index():
+    global settings
+
     if len(ALL_IMAGES) == 0:
         _loadAllMemes()
-    return render_template("index.html", allimages=ALL_IMAGES, length=str(len(ALL_IMAGES)))
+    return render_template("index.html",
+                           allimages=ALL_IMAGES,
+                           length=str(len(ALL_IMAGES)),
+                           wblocation=settings["Website"]["Location"],
+                           wbcontact=settings["Website"]["Contact"],
+                           wbemail=settings["Website"]["Email"],
+                           )
 
 
 @app.route("/r")
@@ -58,6 +70,8 @@ def api():
 
 def startServer():
 
+    global settings
+
     def _disable_werkzeug():
         app.logger.disabled = True
         ueslessLogger = getLogger('werkzeug')
@@ -72,9 +86,6 @@ def startServer():
             _disable_werkzeug()
     except:
         _disable_werkzeug()
-
-    with open(str(os.path.join(os.getcwd(), "database", "config.json")), "r", encoding="utf-8") as fdata:
-        settings = json.load(fdata)
 
     app.run(settings["HOST"], port=int(settings["PORT"]), debug=debug)
 
