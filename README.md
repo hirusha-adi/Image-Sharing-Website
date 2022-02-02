@@ -11,6 +11,10 @@ python3 server.py
 
 replace `python3` with `python` and `pip3` with `pip` if you are using windows
 
+# Config
+
+Everything is easily customizable using the `./database/config.json`
+
 # Privacy
 
 - What is being logged? Your IP Address + User Agent are being logged for security purposes
