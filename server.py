@@ -50,7 +50,7 @@ def index():
                            length=str(len(ALL_IMAGES)),
                            wblocation=settings["Website"]["Location"],
                            wbcontact=settings["Website"]["Contact"],
-                           wbemail=settings["Website"]["Email"],
+                           wbemail=settings["Website"]["Email"]
                            )
 
 
