@@ -35,9 +35,6 @@ def _loadAllMemes():
             pass
 
 
-_loadAllMemes()
-
-
 @app.route("/")
 def index():
     if len(ALL_IMAGES) == 0:
