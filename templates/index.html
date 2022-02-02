@@ -37,7 +37,7 @@
     </header>
 
     <div class="container">
-        {% for linkname in allimages%}
+        {% for linkname in allimages %}
             <img src="{{ linkname }}">
         {% endfor %}
     </div>
@@ -56,7 +56,7 @@
                 <span><i class="fa fa-map-marker"></i></span>
                 <span>{{ wblocation }}</span>
             </section>
-            <section onclick="showDiscordInfo()">
+            <section>
                 <span><i class="fa fa-phone"></i></span>
                 <span>{{ wbcontact }}</span>
             </section>
@@ -68,19 +68,26 @@
         <span class="border-shape"></span>
         <div class="bottom_content">
             <section>
-                <a href="https://www.facebook.com/hirusha.adikari01/" target="_blank"><i class="fa fa-facebook"></i></a>
-                <a href="https://www.instagram.com/hirusha.adikari.main/" target="_blank"><i class="fa fa-instagram"></i></a>
-                <a href="https://www.instagram.com/hirusha.adikari.photography/" target="_blank"><i class="fa fa-instagram"></i></a>
-                <a href="https://twitter.com/hirusha_adikari/" target="_blank"><i class="fa fa-twitter"></i></a>
+                {% for fblink in facebook_links %}
+                    <a href="{{ fblink }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                {% endfor %}
+
+                {% for iglink in instagram_links %}
+                    <a href="{{ iglink }}" target="_blank"><i class="fa fa-instagram"></i></a>
+                {% endfor %}
+                
+                {% for twlink in twitter_links %}
+                    <a href="https://twitter.com/hirusha_adikari/" target="_blank"><i class="fa fa-twitter"></i></a>
+                {% endfor %}
             </section>
             <section>
-                <a href="http://hirusha.xyz">Home</a>
-                <a href="https://github.com/hirusha-adi/" target="_blank">Github</a>
-                <a onclick="showDiscordInfo()">Contact Us</a>
+                {% for key, value in bottom_links.items() %}
+                <a href="{{ value }}">{{ key }}</a>
+                {% endfor %}
             </section>
         </div>
         <div class="copyright">
-            Copyright © 2022 @hirusha-adi - All rights reserved
+            {{ wbcopyright }}
         </div>
     </footer>
 
@@ -89,8 +96,9 @@
         function reloadWebpage() {
             secret = prompt("Please enter the password to reload the database", "Secret lol");
             console.log(secret)
-            if (secret == "dabigzkek") {
-                window.location.href = window.location.href + "/r";
+            if (secret == "{{ SecretKey }}") {
+                window.location.href = window.location.href + "r";
+                console.log(window.location.href)
             }
             else {
                 alert("Invalid Password")
