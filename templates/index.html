@@ -94,8 +94,9 @@
     <script>
 
         function reloadWebpage() {
-            secret = prompt("Please enter the password to reload the database", "Secret lol");
+            secret = prompt("Please enter the password to reload the database", "Password");
             console.log(secret)
+            // the password is revealed here lol
             if (secret == "{{ SecretKey }}") {
                 window.location.href = window.location.href + "r";
                 console.log(window.location.href)
@@ -103,10 +104,6 @@
             else {
                 alert("Invalid Password")
             }
-        }
-
-        function showDiscordInfo() {
-            alert("You can contact me on Discord - ZeaCeR#5641")
         }
 
     </script>
