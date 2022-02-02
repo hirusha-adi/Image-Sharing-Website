@@ -6,6 +6,7 @@
 - New footer
 - Added a password to reload the link list to prevent spam
 - New `/api` route
+- Everything is highly customizable with the `./database/config.json`
 
 # v0.1
 
