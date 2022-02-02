@@ -40,6 +40,8 @@ _loadAllMemes()
 
 @app.route("/")
 def index():
+    if len(ALL_IMAGES) == 0:
+        _loadAllMemes()
     return render_template("index.html", allimages=ALL_IMAGES, length=str(len(ALL_IMAGES)))
 
 
