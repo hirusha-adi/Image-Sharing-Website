@@ -24,3 +24,7 @@ Everything is easily customizable using the `./database/config.json`
 
 1. create a new text files with direct image links sperated line by line
 2. copy that text file to the `./database/` directory
+
+# Credits
+
+1. [Project Website: On Github Pages](https://github.com/learning-zone/website-templates/tree/master/portfolio-item)
