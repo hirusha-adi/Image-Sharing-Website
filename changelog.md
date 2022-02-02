@@ -5,6 +5,7 @@
 - New header
 - New footer
 - Added a password to reload the link list to prevent spam
+- New `/api` route
 
 # v0.1
 
